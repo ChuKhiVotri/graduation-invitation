@@ -4,9 +4,7 @@ body {
   min-height: 100vh;
   font-family: 'Be Vietnam Pro', system-ui, sans-serif;
   color: #09213f;
-  background:
-    radial-gradient(circle at top left, rgba(0,167,238,.24), transparent 34%),
-    linear-gradient(135deg, #eaf8ff, #f8fbff 42%, #eef5ff);
+  background: radial-gradient(circle at top left, rgba(0,167,238,.24), transparent 34%), linear-gradient(135deg, #eaf8ff, #f8fbff 42%, #eef5ff);
 }
 .dashboard-shell { width: min(1100px, calc(100% - 28px)); margin: 0 auto; padding: 32px 0; }
 .dashboard-card { background: rgba(255,255,255,.86); border: 1px solid rgba(16,92,170,.12); border-radius: 28px; padding: 28px; box-shadow: 0 24px 70px rgba(5,55,105,.16); }

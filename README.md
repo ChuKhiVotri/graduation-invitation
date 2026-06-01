@@ -1,86 +1,57 @@
 # Graduation Invitation + RSVP Dashboard
 
-Project này có thêm phần **Xác nhận tham gia**, dashboard xem danh sách và SQLite database để lưu dữ liệu.
+Bản này đã sửa lỗi deploy từ Windows:
 
-## Chạy local bằng Node.js
+- Không kèm `node_modules/`.
+- Có `.gitignore` để không push `node_modules`, SQLite database, `.env`.
+- Render/Linux sẽ tự chạy `npm install`, tránh lỗi `invalid ELF header`.
+- Có form xác nhận tham gia, dashboard và SQLite database.
 
-```bash
+## Chạy local trên Windows
+
+```bat
 npm install
 npm start
 ```
 
-Mở trang thư mời:
+Mở:
 
 ```text
 http://localhost:3000
-```
-
-Mở dashboard:
-
-```text
 http://localhost:3000/dashboard
 ```
 
-Mật khẩu dashboard mặc định khi chạy local:
+Mật khẩu dashboard mặc định:
 
 ```text
 admin123
 ```
 
-Bạn có thể đổi mật khẩu bằng biến môi trường:
+## Deploy Render
 
-```bash
-DASHBOARD_PASSWORD="mat-khau-cua-ban" npm start
-```
+Push project sạch này lên GitHub, sau đó vào Render tạo Web Service.
 
-Database SQLite được lưu tại:
+Cấu hình:
 
 ```text
-database/rsvp.sqlite
+Build Command: npm install
+Start Command: npm start
 ```
 
-## Deploy bằng Docker Compose
-
-Sửa mật khẩu dashboard trong `docker-compose.yml`:
-
-```yaml
-DASHBOARD_PASSWORD=doi-mat-khau-nay
-```
-
-Sau đó chạy:
-
-```bash
-docker compose up -d --build
-```
-
-Truy cập:
+Environment Variables:
 
 ```text
-http://IP_SERVER:3000
-http://IP_SERVER:3000/dashboard
+NODE_ENV=production
+DASHBOARD_PASSWORD=matkhaucuaban
 ```
 
-Dữ liệu RSVP được lưu trong Docker volume `graduation_db`, nên restart container không mất dữ liệu.
+Sau deploy, link sẽ có dạng:
 
-## API
-
-Gửi xác nhận:
-
-```http
-POST /api/rsvp
-Content-Type: application/json
-
-{
-  "name": "Tên khách",
-  "guestSlug": "slug-neu-co",
-  "inviteName": "Tên trên thư mời",
-  "pageUrl": "Link trang"
-}
+```text
+https://ten-service.onrender.com
+https://ten-service.onrender.com/dashboard
 ```
 
-Xem danh sách:
+## Lưu ý database
 
-```http
-GET /api/rsvps
-x-dashboard-password: mat-khau-dashboard
-```
+Bản này dùng SQLite. Trên Render Free, dữ liệu có thể mất khi redeploy/restart vì filesystem không bền. Dùng để test public link thì ổn. Nếu dùng thật lâu dài, nên chuyển sang PostgreSQL hoặc dùng Render Persistent Disk.

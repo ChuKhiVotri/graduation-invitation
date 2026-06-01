@@ -170,6 +170,7 @@ copyAllLinks?.addEventListener("click", async () => {
 });
 
 
+
 const rsvpForm = document.getElementById("rsvpForm");
 const rsvpName = document.getElementById("rsvpName");
 const rsvpStatus = document.getElementById("rsvpStatus");
@@ -182,6 +183,7 @@ if (rsvpName) {
 rsvpForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
   const name = rsvpName?.value.trim();
+
   if (!name) {
     rsvpStatus.textContent = "Bạn nhập tên trước nha.";
     return;
@@ -210,7 +212,7 @@ rsvpForm?.addEventListener("submit", async (event) => {
     showToast("Đã lưu xác nhận tham gia!");
     fireConfetti(120);
   } catch (error) {
-    rsvpStatus.textContent = "Chưa kết nối được server. Khi deploy bằng Node.js/Docker thì form sẽ lưu vào database.";
+    rsvpStatus.textContent = "Chưa lưu được xác nhận. Bạn kiểm tra server hoặc deploy lại nha.";
     showToast("Chưa lưu được xác nhận");
   } finally {
     rsvpSubmit.disabled = false;
