@@ -1,0 +1,16 @@
+services:
+  graduation-web:
+    build: .
+    container_name: graduation-web
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DASHBOARD_PASSWORD=doi-mat-khau-nay
+      - DB_DIR=/app/database
+    volumes:
+      - graduation_db:/app/database
+    restart: unless-stopped
+
+volumes:
+  graduation_db:

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard xác nhận tham gia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/dashboard.css" />
+</head>
+<body>
+  <main class="dashboard-shell">
+    <section class="dashboard-card">
+      <div class="dashboard-header">
+        <div>
+          <p class="eyebrow">Graduation RSVP</p>
+          <h1>Dashboard xác nhận tham gia</h1>
+          <p>Xem danh sách những người đã nhập tên và bấm xác nhận.</p>
+        </div>
+        <a class="back-link" href="./">← Về trang thư mời</a>
+      </div>
+
+      <form class="password-box" id="passwordForm">
+        <label for="dashboardPassword">Mật khẩu dashboard</label>
+        <div>
+          <input id="dashboardPassword" type="password" placeholder="Nhập mật khẩu" required />
+          <button type="submit">Xem danh sách</button>
+        </div>
+        <p id="dashboardMessage"></p>
+      </form>
+
+      <div class="stats" id="stats" hidden>
+        <article>
+          <span>Tổng xác nhận</span>
+          <strong id="totalRsvps">0</strong>
+        </article>
+        <button id="refreshButton" type="button">Tải lại</button>
+      </div>
+
+      <div class="table-wrap" id="tableWrap" hidden>
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Tên</th>
+              <th>Link khách mời</th>
+              <th>Thời gian</th>
+              <th>IP</th>
+            </tr>
+          </thead>
+          <tbody id="rsvpTable"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="./js/dashboard.js"></script>
+</body>
+</html>
